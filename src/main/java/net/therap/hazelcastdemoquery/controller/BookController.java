@@ -29,6 +29,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.findAll());
     }
 
+    @PostMapping
     public ResponseEntity<?> saveBooks(@RequestBody Book book) {
         return ResponseEntity.ok(bookService.save(book));
     }
