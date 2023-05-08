@@ -1,0 +1,15 @@
+hazelcast:
+  network:
+    join:
+      multicast:
+        enabled: true
+  map:
+    books:
+      backup-count: 1
+      in-memory-format: BINARY
+      max-idle-seconds: 0 #second
+      time-to-live-seconds: 0 #second
+      eviction:
+        eviction-policy: LRU
+        max-size-policy: FREE_HEAP_SIZE
+        size: 200
