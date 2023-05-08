@@ -1,0 +1,50 @@
+hazelcast:
+  network:
+    join:
+      multicast:
+        enabled: true
+  map:
+    books:
+      backup-count: 1
+      read-backup-data: true
+      in-memory-format: BINARY #can be BINARY (Data will be stored in serialized binary format), OBJECT (Data will be stored in deserialized form), NATIVE (Data will be stored in the map that uses Hazelcast's High-Density Memory Store feature -> only available in Hazelcast enterprise edition),
+      statistics-enabled: true #when disabled, the statistics won't be recorded for management center
+      per-entry-stats-enabled: true # when enabled, entry level statistics will be recorded
+      max-idle-seconds: 60 #second
+      time-to-live-seconds: 60 #second
+      eviction:
+        eviction-policy: LRU #can be RANDOM (evicted randomly), LRU (Least recent used), LFU (Least frequent used), NONE (No eviction)
+          # Configuration has the following attributes:
+          # - size: Maximum size of the map.
+          # - max-size-policy: Maximum size policy for eviction of the map. Available values are as follows:
+          #   * PER_NODE:
+          #     Maximum number of map entries in each cluster member. You cannot set the max-size to a value lower
+          #     than the partition count (which is 271 by default).
+          #   * PER_PARTITION:
+          #     Maximum number of map entries within each partition.
+          #   * USED_HEAP_SIZE:
+          #     Maximum used heap size in megabytes per map for each Hazelcast instance. It does not work when
+          #     "in-memory-format" is set to OBJECT.
+          #   * USED_HEAP_PERCENTAGE:
+          #     Maximum used heap size percentage per map for each Hazelcast instance. If, for example, JVM is
+          #     configured to have 1000 MB and this value is 10, then the map entries will be evicted when used heap size
+          #     exceeds 100 MB. It does not work when "in-memory-format" is set to OBJECT.
+          #   * FREE_HEAP_SIZE:
+          #     Minimum free heap size in megabytes for each Hazelcast instance.
+          #   * FREE_HEAP_PERCENTAGE:
+          #     Minimum free heap size percentage for each Hazelcast instance. If, for example, JVM is configured to
+          #     have 1000 MB and this value is 10, then the map entries will be evicted when free heap size is below 100 MB.
+          #   * USED_NATIVE_MEMORY_SIZE:
+          #     Maximum used native memory size in megabytes per map for each Hazelcast instance. It is available only in
+          #     Hazelcast Enterprise HD.
+          #   * USED_NATIVE_MEMORY_PERCENTAGE:
+          #     Maximum used native memory size percentage per map for each Hazelcast instance. It is available only in
+          #     Hazelcast Enterprise HD.
+          #   * FREE_NATIVE_MEMORY_SIZE:
+          #     Minimum free native memory size in megabytes for each Hazelcast instance. It is available only in
+          #     Hazelcast Enterprise HD.
+          #   * FREE_NATIVE_MEMORY_PERCENTAGE:
+          #     Minimum free native memory size percentage for each Hazelcast instance. It is available only in
+          #     Hazelcast Enterprise HD.
+        max-size-policy: PER_NODE
+        size: 999
