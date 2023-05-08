@@ -7,8 +7,8 @@ hazelcast:
     books:
       backup-count: 1
       in-memory-format: BINARY
-      max-idle-seconds: 0 #second
-      time-to-live-seconds: 0 #second
+      max-idle-seconds: 10 #second
+      time-to-live-seconds: 10 #second
       eviction:
         eviction-policy: LRU
         max-size-policy: FREE_HEAP_SIZE
